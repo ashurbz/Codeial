@@ -1,15 +1,18 @@
-const express = require('express');
-const expressEjsLayouts = require('express-ejs-layouts');
-const app = express();
-const port = 8000;
-const expressLayouts = require('express-ejs-layouts');
-app.use(expressLayouts);
+const express = require('express'); // require express
+const expressLayouts = require('express-ejs-layouts'); // require express layouts
+const app = express(); // app is express
+const port = 8000;   // declared the port
+app.use(expressLayouts); // using express layouts
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',true);
+app.use(express.static('./assets'));    // Setting assests folder for css js files
 
-app.use('/', require('./routes'));
 
-app.set('view engine','ejs');
+app.use('/', require('./routes'));    // routes used, giving directory of routes
 
-app.set('views','./views');
+app.set('view engine','ejs');   // setting view engine as ejs
+
+app.set('views','./views'); // setting up view engine folder as views
 
 
 
