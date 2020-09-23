@@ -89,8 +89,9 @@ module.exports.createSession = (req,res)=>{
     })
       
 }
-
+// logout user
 module.exports.destroySession = (req,res)=>{
+    // resetting cookie to blank
     res.cookie('user_id','');
     return res.redirect('sign-in');
 }
