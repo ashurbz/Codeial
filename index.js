@@ -9,6 +9,7 @@ app.set('layout extractScripts',true);// using script of different pages to show
 app.use(express.static('./assets'));    // Setting assests folder for css js files
 
 
+
 app.use('/', require('./routes'));    // routes used, giving directory of routes
 
 app.set('view engine','ejs');   // setting view engine as ejs
