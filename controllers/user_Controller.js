@@ -38,7 +38,7 @@ module.exports.create = (req,res)=>{
             }
             else{
                 console.log(`user already exists`);
-              return  res.redirect('back');
+              return res.redirect('back');
             }
         });
     }
