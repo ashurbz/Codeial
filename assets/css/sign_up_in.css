@@ -1,0 +1,10 @@
+input.form-control{
+    background-color: cyan;
+    text-align: center;
+}
+
+form{
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
