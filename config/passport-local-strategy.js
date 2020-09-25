@@ -1,9 +1,11 @@
+
 const passport = require('passport');
 const LocalStartegy = require('passport-local').Strategy;
 const User = require('../models/user');
 
+
 passport.use(new LocalStartegy({
-    usernameField:email
+    usernameField:'email'
 },
     (email,password,done)=>{
         //finding user if present in db,comparing with email
@@ -15,7 +17,7 @@ passport.use(new LocalStartegy({
                 return done(null,false);
             }
             //user matched
-            return done(null, user);
+            return done(null,user);
         })
     }
 
@@ -37,5 +39,27 @@ passport.deserializeUser((id,done)=>{
     })
 });
 
-module.exports = passport;
+// check if the user is authenticated
+
+passport.checkAuthentication = (req,res,next)=>{
+    //if the user is signed in then let him view the ejs 
+    if (req.isAuthenticated()){
+        return next();
+    }
+    //if the user is not signed in
+    return res.redirect('/user/sign-in');
+}
+
+//setting user 
+passport.setAuthenticatedUser = (req,res,next)=>{
+    if (req.isAuthenticated()){
+        res.locals.user = req.user
+    }
+    next();
+}
+
+
+
+
+// module.exports = passport;
 
