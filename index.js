@@ -29,15 +29,15 @@ app.set('view engine','ejs');   // setting view engine as ejs
 app.set('views','./views'); // setting up view engine folder as views
 
 app.use(session({
-    cookie: 'codeial',
+    name: 'codeial',
     //secret to be changed later
     secret:'something',
     resave: false,
     saveUninitialized: false,
     cookie:{
         maxAge:(1000*3600*48)
-    },
-    store: new mongoStore({
+    }, 
+    store: new mongoStore({ 
         mongooseConnection : db,
         autoRemove: 'disabled' 
     },(err)=>{

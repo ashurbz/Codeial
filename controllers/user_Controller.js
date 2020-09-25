@@ -13,7 +13,7 @@ module.exports.SignUp= (req,res)=>{
 // rendering sign in page
 module.exports.signIn = (req,res)=>{
     if(req.isAuthenticated()){
-        return res.redirect('profile');
+        return res.redirect('/');
     }
 
     return res.render('sign_in',{
@@ -57,7 +57,7 @@ module.exports.create = (req,res)=>{
     };
 
 module.exports.createSession = (req,res)=>{
-   return res.redirect('/');
+   return res.redirect('profile');
 }
 
 module.exports.destroySession = (req,res)=>{

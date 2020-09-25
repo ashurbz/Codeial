@@ -1,0 +1,24 @@
+.nav-list{
+    display: inline-block;
+    float: right;
+    margin-top: -60px;
+    margin-right: 10px;
+}
+h1{
+    text-align: center;
+    padding: 7px;
+}
+li{
+    list-style: none;
+    display: inline;
+}
+
+.header{
+    height: 8vh;
+    width: 100vw;
+    background-color: aqua;
+}
+
+button{
+    margin-top: 10px;
+}
