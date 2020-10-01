@@ -31,7 +31,6 @@ module.exports.profile = (req,res)=>{
 // creating user is sign up
 
 module.exports.create = (req,res)=>{
-    console.log(req.body);
     // check password or cnfrm password are same or not
     if(req.body.password != req.body.confirm_password){
        return res.redirect('back')
@@ -57,7 +56,7 @@ module.exports.create = (req,res)=>{
     };
 
 module.exports.createSession = (req,res)=>{
-   return res.redirect('profile');
+   return res.redirect('/');
 }
 
 module.exports.destroySession = (req,res)=>{

@@ -1,5 +1,15 @@
+const Post = require('../models/post')
+
 module.exports.home=(req,res)=>{
-    return res.render('home',{
-        title:'home'
+    Post.find({}).populate('user').exec((err,post)=>{
+        if(err){
+            console.log(`error is finding post`);
+            return;
+        }
+        return res.render('home',{
+            title:'posts',
+            post: post
+        })
     })
+
 }
