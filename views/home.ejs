@@ -1,32 +1,39 @@
- <link rel="stylesheet" href="/css/home.css">
-     <h3>Posts</h3>
-     <form action="/post/create" method="POST">
-        <div class="mb-3">
-          <textarea class="form" placeholder="Type Here...." name="content" required cols="20" rows="3"></textarea>
-          <button  type="Submit" class="btn btn-primary button">Post</button>
-        </div>
+<link rel="stylesheet" href="/css/home.css" />
 
+<% if(locals.user){ %>
 
-<div>
+<h3>Posts</h3>
+<form action="/post/create" method="POST">
+  <div class="mb-3">
+    <textarea
+      class="form"
+      placeholder="Type Here...."
+      name="content"
+      required
+      cols="20"
+      rows="3"
+    ></textarea>
+    <button type="Submit" class="btn btn-primary button">Post</button>
+  </div>
 
-        <ul>
-          
-          <% for (post of post){%>
-            <div class="box">
-            <p >
-              <li>
-                <%= post.content %>
-              </li>
-              <small>
-                <%= user.name %>
-              </small>
-            </p>
-          </div>
-            <%}%>
-        </ul>
-
-     
+  <div>
+    <ul>
+      <% for (post of post){%>
+      <div class="box">
+        <p>
+          <li><%= post.content %></li>
+          <small> <%= user.name %> </small>
+        </p>
       </div>
+      <%}%>
+    </ul>
+  </div>
+</form>
+<%}else{%>
 
+<div class="mid">
+  <h1 class="align">Welcome To Codeial!!!</h1>
+  <h3 class="align">Please Sign In / Sign Up to Continue</h3>
+</div>
 
- </form>
+<%}%>
