@@ -10,6 +10,10 @@ const postSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+    comment:[{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'Comment'
+    }]
   },
   {
     timestamps: true,
