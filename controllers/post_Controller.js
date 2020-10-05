@@ -1,7 +1,7 @@
-const Post = require('../models/post');
+const Post = require('../models/post');         // require post models
 
 module.exports.create = (req,res)=>{
-    Post.create({
+    Post.create({                               // creating posts                            
         content: req.body.content,
         user: req.user._id
     },(err,post)=>{

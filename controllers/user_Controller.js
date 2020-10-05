@@ -36,14 +36,14 @@ module.exports.create = (req,res)=>{
        return res.redirect('back')
 
     }
-    User.findOne({email:req.body.email},(err,user)=>{
+    User.findOne({email:req.body.email},(err,user)=>{                     // finding user by email
         if(err){
            console.log(`error in finding user ${err}`); return;}
         if(!user){
-            User.create(req.body,(err,user)=>{
+            User.create(req.body,(err,user)=>{                          // if user not found then we create the user
                 if(err){console.log(`error in creating user ${err}`); return;}
                 
-                return res.redirect('sign-in');
+                return res.redirect('sign-in');              
 
             })
                 
@@ -55,11 +55,11 @@ module.exports.create = (req,res)=>{
         });
     };
 
-module.exports.createSession = (req,res)=>{
+module.exports.createSession = (req,res)=>{                // signing in the user
    return res.redirect('/');
 }
 
-module.exports.destroySession = (req,res)=>{
+module.exports.destroySession = (req,res)=>{            // logging out the session
     req.logout();
 
     return res.redirect('/')

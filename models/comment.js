@@ -9,13 +9,13 @@ const commentSchema = new mongoose.Schema({
     },
 
     user:{
-        type: mongoose.Schema.Types.ObjectId,    
-        ref:'User'
+        type: mongoose.Schema.Types.ObjectId,         // type of user document
+        ref:'User'                                    // refernce to User model
     },
 
     post:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Post'
+        ref:'Post'                                     // refer to post schema
     }
 },{
     timestamps:true,
