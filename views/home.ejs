@@ -24,11 +24,51 @@
           <li><%= post.content %></li>
           <small> <%= user.name %> </small>
         </p>
+       
       </div>
-      <%}%>
+    
+      
     </ul>
   </div>
 </form>
+<form action="/comment/create" method="POST">
+  <div class="comment-container">
+    <input class="comment"
+      type="text"
+      class="form-control"
+      name="content"
+      placeholder="Enter Comment"
+      required
+    />
+    <input
+      type="hidden"
+      class="form-control"
+      name="post"
+      value="<%= post._id %>"
+    />
+    <button type="submit" class="btn btn-outline-primary">
+      Add Comment
+    </button>
+  </div>
+</form>
+
+<div>
+  <ul>
+    <% for(comment of post.comment){%>
+      <p>
+        <%= comment.content %>
+        <br>
+        <small>
+          <%= comment.user.name %>
+        </small>
+      </p>
+     
+      <%}%>
+  </ul>
+</div>
+
+<%}%>
+
 <%}else{%>
 
 <div class="mid">
