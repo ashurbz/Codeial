@@ -1,8 +1,6 @@
 .background{
     height: 80vh;
-    background-image: url(https://wallpaperheart.com/wp-content/uploads/2018/04/background-hd-3d-1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: black;
 }
 input.form-control{
     text-align: center;
