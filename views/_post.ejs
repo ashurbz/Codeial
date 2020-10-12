@@ -2,49 +2,60 @@
 
 <form action="/post/create" method="POST">
     <div class="mb-3">
-        <textarea class="form" placeholder="Type Here...." name="content" required cols="20" rows="3"></textarea>
+        <textarea  placeholder="Type Here...." name="content" required cols="50" rows="4"></textarea>
         <button type="Submit" class="btn btn-primary button">Post</button>
     </div>
+</form>
 
-    <div>
-        <ul>
+
+        <ul class="post-list">
             <% for (post of post){%>
-            <div class="box">
-                <p>
+                <li class="whole-post">
+            <h2 class="box">
+                
                     <% if(locals.user.id == post.user.id){ %>
                     <small>
                         <a href="/post/destroy/<%= post.id %>">X</a>
                     </small>
                     <%}%>
-            <li><%= post.content %></li>
-                    <small> <%=post.user.name %> </small>
+                      <div>
+                        <%= post.content %>
+                      </div>  
+                    <strong style="color: black; font-size:medium;"> Posted By: <strong><%=post.user.name %> </strong> </strong>
+
+                    
+
+                    </h2>
 
 
-                </p>
-
-            </div>
+        
 
 
-        </ul>
-    </div>
-</form>
 <form action="/comment/create" method="POST">
     <div class="comment-container">
-        <input class="comment" type="text" class="form-control" name="content" placeholder="Enter Comment" required />
+        <input type="text" class="form-control" name="content" placeholder="Enter Comment" required />
         <input type="hidden" class="form-control" name="post" value="<%= post._id %>" />
-        <button type="submit" class="btn btn-outline-primary">
+        <button type="submit" class="btn btn-primary">
             Add Comment
         </button>
     </div>
 </form>
 
 <div>
-    <ul>
+    <ul class="comments">
         <% for(comment of post.comment){%>
+          <li>
 
-        <%- include('_comment') -%>
+            <%- include('_comment') -%>
+          </li>
+      
         <%}%>
     </ul>
   </div>
   
   <%}%>
+
+</li>
+
+</ul>
+  

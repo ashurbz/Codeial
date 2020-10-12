@@ -1,7 +1,7 @@
 const Post = require('../models/post')           // rquire post model
 
 module.exports.home=(req,res)=>{
-    Post.find({}).populate('user').populate({              // finding post and then populating user inside it
+    Post.find({}).sort("-createdAt").populate('user').populate({              // finding post and then populating user inside it
         path:'comment',                      //nesting populating of user and comment of that user
         populate:{
             path:'user'
