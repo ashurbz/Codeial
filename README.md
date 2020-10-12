@@ -11,7 +11,6 @@ Codeial uses a number of open source projects to work properly:
 * [Bootstrap](https://getbootstrap.com) - great UI boilerplate for modern web apps
 * [node.js](https://nodejs.org/) - evented I/O for the backend
 * [Express](https://expressjs.com/) - fast node.js network app framework 
-* [jQuery](https://jquery.com/) - jQuery has changed the way that millions of people write JavaScript.
 * [mongodb](https://www.mongodb.com) - The database for modern applications
 * [passport.js](https://passportjs.org) - Simple, unobtrusive authentication for Node.js 
 * etc...
