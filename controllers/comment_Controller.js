@@ -25,15 +25,15 @@ module.exports.create= (req,res)=>{
 };
 
 module.exports.destroy = (req,res)=>{
-    Comment.findById(req.params.id,(err,comment)=>{
+    Comment.findById(req.params.id,(err,comment)=>{                     // finding comment by id
         if(err){console.log(`error in finding the comment`); return;}
 
-        if(comment.user == req.user.id){
-            let postId = comment.post;
-            comment.remove();
+        if(comment.user == req.user.id){                             // if comment found 
+            let postId = comment.post;                      // saving of id of post whose comment is going to delete
+            comment.remove();                          // removing comment
 
-            Post.findByIdAndUpdate(postId,{$pull:{comment:req.params.id}},(err,post)=>{
-                return res.redirect('back')
+            Post.findByIdAndUpdate(postId,{$pull:{comment:req.params.id}},(err,post)=>{                   //finding post and then updating it
+                return res.redirect('back')         
             })
         }else{
             return res.redirect('back');
