@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/css/home.css" />
+
+<form action="/post/create" method="POST">
+    <div class="mb-3">
+        <textarea class="form" placeholder="Type Here...." name="content" required cols="20" rows="3"></textarea>
+        <button type="Submit" class="btn btn-primary button">Post</button>
+    </div>
+
+    <div>
+        <ul>
+            <% for (post of post){%>
+            <div class="box">
+                <p>
+                    <% if(locals.user.id == post.user.id){ %>
+                    <small>
+                        <a href="/post/destroy/<%= post.id %>">X</a>
+                    </small>
+                    <%}%>
+            <li><%= post.content %></li>
+                    <small> <%=post.user.name %> </small>
+
+
+                </p>
+
+            </div>
+
+
+        </ul>
+    </div>
+</form>
+<form action="/comment/create" method="POST">
+    <div class="comment-container">
+        <input class="comment" type="text" class="form-control" name="content" placeholder="Enter Comment" required />
+        <input type="hidden" class="form-control" name="post" value="<%= post._id %>" />
+        <button type="submit" class="btn btn-outline-primary">
+            Add Comment
+        </button>
+    </div>
+</form>
+
+<div>
+    <ul>
+        <% for(comment of post.comment){%>
+
+        <%- include('_comment') -%>
+        <%}%>
+    </ul>
+  </div>
+  
+  <%}%>

@@ -3,84 +3,16 @@
 <% if(locals.user){ %>
 
 <h3>Posts</h3>
-<form action="/post/create" method="POST">
-  <div class="mb-3">
-    <textarea
-      class="form"
-      placeholder="Type Here...."
-      name="content"
-      required
-      cols="20"
-      rows="3"
-    ></textarea>
-    <button type="Submit" class="btn btn-primary button">Post</button>
-  </div>
 
-  <div>
-    <ul>
-      <% for (post of post){%>
-      <div class="box">
-        <p>
-          <% if(locals.user.id == post.user.id){ %>
-            <small>
-            <a href="/post/destroy/<%= post.id %>">X</a>
-          </small>
-          <%}%>
-          <li><%= post.content %></li>
-          <small> <%=post.user.name %> </small>
+<%- include('_post') -%>
 
-          
-        </p>
-       
-      </div>
-    
-      
-    </ul>
-  </div>
-</form>
-<form action="/comment/create" method="POST">
-  <div class="comment-container">
-    <input class="comment"
-      type="text"
-      class="form-control"
-      name="content"
-      placeholder="Enter Comment"
-      required
-    />
-    <input
-      type="hidden"
-      class="form-control"
-      name="post"
-      value="<%= post._id %>"
-    />
-    <button type="submit" class="btn btn-outline-primary">
-      Add Comment
-    </button>
-  </div>
-</form>
-
-<div>
-  <ul>
-    <% for(comment of post.comment){%>
-      <p>
-        <%= comment.content %>
-        <br>
-        <small>
-          <%= comment.user.name %>
-        </small>
-      </p>
-     
-      <%}%>
-  </ul>
-</div>
-
-<%}%>
 
 <%}else{%>
 
-<div class="mid">
-  <h1 class="align">Welcome To Codeial!!!</h1>
-  <h3 class="align">Please Sign In / Sign Up to Continue</h3>
-</div>
+  <div style="text-align: center; background-color: aquamarine; height: 100vh;">
+     <h1>Welcome To Codeial</h1>
+     <h2>Please Sign in / Sign up To Continue</h2>
+  
+  </div>
 
-<%}%>
+  <%}%>
