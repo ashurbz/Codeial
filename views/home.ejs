@@ -21,8 +21,15 @@
       <% for (post of post){%>
       <div class="box">
         <p>
+          <% if(locals.user.id == post.user.id){ %>
+            <small>
+            <a href="/post/destroy/<%= post.id %>">X</a>
+          </small>
+          <%}%>
           <li><%= post.content %></li>
           <small> <%= user.name %> </small>
+
+          
         </p>
        
       </div>
