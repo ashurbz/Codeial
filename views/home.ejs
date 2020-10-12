@@ -4,45 +4,9 @@
 
 <h3>Posts</h3>
 
-<<<<<<< HEAD
+
 <%- include('_post') -%>
-=======
-  <div>
-    <ul>
-      <% for (post of post){%>
-      <div class="box">
-        <p>
-          <li><%= post.content %></li>
-          <small> <%= post.user.name %> </small>
-        </p>
-       
-      </div>
-    
-      
-    </ul>
-  </div>
-</form>
-<form action="/comment/create" method="POST">
-  <div class="comment-container">
-    <input class="comment"
-      type="text"
-      class="form-control"
-      name="content"
-      placeholder="Enter Comment"
-      required
-    />
-    <input
-      type="hidden"
-      class="form-control"
-      name="post"
-      value="<%= post._id %>"
-    />
-    <button type="submit" class="btn btn-outline-primary">
-      Add Comment
-    </button>
-  </div>
-</form>
->>>>>>> 89a70473d66e12484318c0ecd86a1bc07b0101ea
+
 
 
 <%}else{%>
