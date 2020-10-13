@@ -18,3 +18,16 @@
   </div>
 
   <%}%>
+
+
+
+<section class="friends">
+      <h2 style="color: whitesmoke;" >Friends</h2>
+   <% for(friends of all_user ){ %>
+      <p>
+         <a href="/user/profile/<%= friends.id %>"><%= friends.name   %></a>
+      </p>
+
+      <%}%>
+
+</section>

@@ -23,9 +23,14 @@ module.exports.signIn = (req,res)=>{
 
 // render profile page
 module.exports.profile = (req,res)=>{
-    return res.render('user_profile',{
-        title: 'profile page'
+    User.findById(req.params.id,(err,user)=>{
+        return res.render('user_profile',{
+            title: 'profile page',
+            profile_user: user
+            
+        })
     })
+    
 }  
 
 // creating user is sign up

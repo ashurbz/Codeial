@@ -1,4 +1,5 @@
 const Post = require('../models/post')           // rquire post model
+const User = require('../models/user')
 
 module.exports.home=(req,res)=>{
     Post.find({}).sort("-createdAt").populate('user').populate({              // finding post and then populating user inside it
@@ -8,15 +9,15 @@ module.exports.home=(req,res)=>{
         }
     })
     
-    .exec((err,post)=>{                       // exec function just like callback
-        if(err){
-            console.log(`error is finding post`);
-            return;
-        }
+    .exec((err,post)=>{           // exec function just like callback
+       User.find({},(err,user)=>{
         return res.render('home',{
             title:'posts',
-            post: post
+            post: post,
+            all_user: user
         })
+       })
+        
     })
 
 }
