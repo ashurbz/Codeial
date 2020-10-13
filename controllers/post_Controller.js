@@ -1,33 +1,33 @@
 const Post = require('../models/post');        // require post models
 const Comment = require('../models/comment')
 
-
-module.exports.create = (req,res)=>{
-    Post.create({                               // creating posts                            
-        content: req.body.content,
-        user: req.user._id
-    },(err,post)=>{
-        if(err){
-            console.log(`error in creating post`); return;
-        }
+module.exports.create = async (req,res)=>{
+    try{
+    await  Post.create({                               // creating posts                            
+            content: req.body.content,
+            user: req.user._id
+        })
         return res.redirect('back');
-    })
+    }catch(err){
+        console.log('Error',err);
+    }
 }
 
-module.exports.destroy =(req,res)=>{     // deleting post
-    Post.findById(req.params.id,(err,post)=>{
-        if(err){console.log(`error in finding the post`); return;}
 
-            if(post.user== req.user.id){            // if post found then watching if post is created by same user who is logged in
-                post.remove();                      // removing post
+module.exports.destroy = async (req,res)=>{  
+    try{ let post=  await Post.findById(req.params.id);
 
-                Comment.deleteMany({post:req.params.id},(err)=>{               // deleting comments associated with that post
-                    return res.redirect('back')
-                })
+        if(post.user== req.user.id){            // if post found then watching if post is created by same user who is logged in
+           post.remove();                      // removing post
+       
+          await Comment.deleteMany({post:req.params.id});
+          return res.redirect('back');
+       
+       }else{
+        return   res.redirect('back')
+       }}
+       catch(err){
+           console.log(`error ${err}` )
+       }   
 
-            }else{
-             return   res.redirect('back')
-            }
-        
-    })
 }
