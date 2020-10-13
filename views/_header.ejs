@@ -8,7 +8,7 @@
     <h5 class="my-0  mr-md-auto font-weight-normal"> <img src="/images/logo.png" alt="" width="100" height="100"> </h5>
     <nav class="my-2 my-md-0 mr-md-3">
       <% if(locals.user){ %>
-      <a class="p-2 text-dark" href="/user/profile"><strong><%= user.name %></strong></a>
+      <a class="p-2 text-dark" href="/user/profile/<%= user.id %>"><strong><%= user.name %></strong></a>
       <a class="p-2 text-dark" href="/user/logout"
         ><button type="submit" class="btn btn-danger">Sign Out</button></a
       >

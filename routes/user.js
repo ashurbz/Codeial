@@ -7,7 +7,8 @@ const { unsubscribe } = require('.');
 
 router.get('/sign-up',userController.SignUp);
 router.get('/sign-in',userController.signIn);
-router.get('/profile/:id',passport.checkAuthentication,userController.profile)
+router.get('/profile/:id',passport.checkAuthentication,userController.profile);
+router.post('/update/:id',passport.checkAuthentication,userController.update);
 
 
 router.post('/create',userController.create);

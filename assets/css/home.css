@@ -113,6 +113,7 @@ form{
 
 .post-list{
     margin-bottom: 10vh;
+    width: 70vw;
 }
 .form-control{
     display: inline;
@@ -129,5 +130,22 @@ a{
 
 form{
     margin-left: 40px;
+}
+
+.home-container{
+    display: inline-block;
+    
+}
+.friends{
+    display: inline-block;
+    float: right;
+    padding: 4vw;
+    width: 20vw;
+    border-left: 1px solid white;
+    height: 100vh;
+    border-top: 1px solid white;
+    margin: 5px;
+    border-bottom: 1px solid white;
+    border: 1px solid white;
 }
 
