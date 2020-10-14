@@ -112,6 +112,7 @@ form{
 
 
 .post-list{
+    display: inline-block;
     margin-bottom: 10vh;
     width: 70vw;
 }
