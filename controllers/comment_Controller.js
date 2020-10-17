@@ -12,6 +12,8 @@ module.exports.create= async (req,res)=>{
          });     
              post.comment.push(comment);         // mongoose function to update comment
              post.save();          // telling db its final save it
+
+             req.flash('success','Comment Successfully Created')
      
              res.redirect('/');
          
@@ -30,6 +32,7 @@ module.exports.destroy = async (req,res)=>{
             comment.remove();                          // removing comment
     
            let post= await Post.findByIdAndUpdate(postId,{$pull:{comment:req.params.id}})
+           req.flash('success', 'Comment deleted')
             return res.redirect('back');
         }else{
             return res.redirect('back');

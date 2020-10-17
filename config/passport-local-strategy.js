@@ -5,15 +5,16 @@ const User = require('../models/user');
 
 
 passport.use(new LocalStartegy({
-    usernameField:'email'
+    usernameField:'email',
+    passReqToCallback: true
 },
-    (email,password,done)=>{
+    (req,email,password,done)=>{
         //finding user if present in db,comparing with email
         User.findOne({email:email},(err,user)=>{
-            if(err){console.log(`error in finding user`); return done(null);}
+            if(err){req.flash('error',err);}
             // user not found or password incorrect
             if(!user || user.password != password){
-                console.log(`passowrd missmatch or invalid user`)
+                req.flash('error','Invalid Username/Password')
                 return done(null,false);
             }
             //user matched

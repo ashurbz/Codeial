@@ -71,12 +71,14 @@ module.exports.create = (req,res)=>{
         });
     };
 
-module.exports.createSession = (req,res)=>{                // signing in the user
+module.exports.createSession = (req,res)=>{   
+    req.flash('success','Login Succesfully!')             // signing in the user
    return res.redirect('/');
 }
 
 module.exports.destroySession = (req,res)=>{            // logging out the session
     req.logout();
+    req.flash('success','You have been Logout Succesfully!')  
 
     return res.redirect('/')
 }

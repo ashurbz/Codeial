@@ -10,6 +10,8 @@ const session = require('express-session');
 const mongoStore= require('connect-mongo')(session);
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const flash = require('connect-flash');
+const customMiddleware = require('./config/middleware')
 
 app.use(cookieParser());
 app.set('layout extractStyles',true); // using css of different pages to shown in right way
@@ -49,6 +51,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+app.use(flash());
+app.use(customMiddleware.setFlash);
 
 app.use('/', require('./routes'));    // routes used, giving directory of routes
 
