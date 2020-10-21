@@ -1,4 +1,6 @@
 const User = require('../models/user')
+const fs = require('fs');
+const path = require('path')
 // rendering sign up page
 module.exports.SignUp= (req,res)=>{
     if(req.isAuthenticated()){
@@ -42,6 +44,9 @@ module.exports.update =  async (req,res) => {
             user.name = req.body.name,
             user.email = req.body.email
             if(req.file){
+                if(user.avatar){
+                    fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                }
                 //saving the path of uploaded file into avatar field in user
                 user.avatar = User.avatarPath + '/' +req.file.filename ;
             }
