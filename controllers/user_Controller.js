@@ -33,15 +33,32 @@ module.exports.profile = (req,res)=>{
     
 }  
 
-module.exports.update = (req,res)=>{
-    if(req.user.id == req.params.id){
-        User.findByIdAndUpdate(req.params.id,req.body,(err,user)=>{
-            return res.redirect('back');
+module.exports.update =  async (req,res) => {
+   if(req.user.id = req.params.id){
+       try{
+        let user = await User.findById(req.params.id);
+        User.uploadedAvatar(req,res,(err)=>{
+            if(err){console.log(`Multer error`,err);}
+            user.name = req.body.name,
+            user.email = req.body.email
+            if(req.file){
+                //saving the path of uploaded file into avatar field in user
+                user.avatar = User.avatarPath + '/' +req.file.filename ;
+            }
+            user.save();
+            return res.redirect('back')
         })
-    }
-    else{
-        return res.status('401').send('unauthorised');
-    }
+       }catch (err){
+        req.flash('error',err);
+        return res.redirect('back')
+       }
+
+       
+
+   }else{
+        req.flash('error','Unauthorized!');
+        return res.status(401).send('Unauthorized')
+   }
 }
 
 // creating user is sign up
